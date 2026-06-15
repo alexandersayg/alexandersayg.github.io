@@ -7,590 +7,140 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ink: #0a0a0a;
-    --amber: #E8A020;
-    --amber-dim: #c4861a;
-    --cream: #F5F0E8;
-    --smoke: #1a1a1a;
-    --mid: #6b6560;
-    --white: #ffffff;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--ink);
-    color: var(--cream);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
-    cursor: default;
-  }
-
-  /* ── NOISE OVERLAY ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 999;
-    opacity: 0.4;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2rem 2.5rem;
-    background: rgba(10,10,10,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(232,160,32,0.15);
-  }
-
-  .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.3rem;
-    letter-spacing: 0.12em;
-    color: var(--amber);
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-size: 0.72rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--mid);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--amber); }
-
-  /* ── HERO ── */
-  #hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 8rem 3rem 4rem 4rem;
-    position: relative;
-    z-index: 2;
-  }
-
-  .hero-tag {
-    font-size: 0.68rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--amber);
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.2s forwards;
-  }
-
-  .hero-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(4rem, 8vw, 7rem);
-    line-height: 0.92;
-    letter-spacing: 0.02em;
-    color: var(--white);
-    opacity: 0;
-    animation: fadeUp 0.8s 0.4s forwards;
-  }
-
-  .hero-name span {
-    display: block;
-    color: var(--amber);
-  }
-
-  .hero-desc {
-    margin-top: 2rem;
-    font-size: 1rem;
-    line-height: 1.7;
-    color: rgba(245,240,232,0.65);
-    max-width: 420px;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.6s forwards;
-  }
-
-  .hero-cta {
-    margin-top: 2.5rem;
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.8s forwards;
-  }
-
-  .btn-primary {
-    background: var(--amber);
-    color: var(--ink);
-    padding: 0.75rem 1.8rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.2s;
-    border: none;
-    cursor: pointer;
-  }
-
-  .btn-primary:hover { background: var(--amber-dim); transform: translateY(-2px); }
-
-  .btn-outline {
-    border: 1px solid rgba(232,160,32,0.4);
-    color: var(--cream);
-    padding: 0.75rem 1.8rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.78rem;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: border-color 0.2s, color 0.2s, transform 0.2s;
-  }
-
-  .btn-outline:hover { border-color: var(--amber); color: var(--amber); transform: translateY(-2px); }
-
-  .hero-right {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Big background number */
-  .hero-bg-text {
-    position: absolute;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28vw;
-    color: rgba(232,160,32,0.04);
-    line-height: 1;
-    right: -2vw;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .stats-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5px;
-    width: 85%;
-    max-width: 380px;
-    position: relative;
-    z-index: 2;
-    opacity: 0;
-    animation: fadeUp 0.8s 1s forwards;
-  }
-
-  .stat-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(232,160,32,0.12);
-    padding: 1.8rem 1.5rem;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.3s, background 0.3s;
-  }
-
-  .stat-card:hover {
-    border-color: rgba(232,160,32,0.4);
-    background: rgba(232,160,32,0.05);
-  }
-
-  .stat-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 3px; height: 100%;
-    background: var(--amber);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .stat-card:hover::before { opacity: 1; }
-
-  .stat-number {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.8rem;
-    color: var(--amber);
-    line-height: 1;
-    letter-spacing: 0.02em;
-  }
-
-  .stat-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--mid);
-    margin-top: 0.4rem;
-    line-height: 1.4;
-  }
-
-  /* ── SECTION BASE ── */
-  section { padding: 6rem 4rem; }
-
-  .section-tag {
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--amber);
-    margin-bottom: 1rem;
-  }
-
-  .section-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    line-height: 1.1;
-    color: var(--white);
-    margin-bottom: 3rem;
-  }
-
-  .section-title em {
-    font-style: italic;
-    color: var(--amber);
-  }
-
-  /* ── ABOUT ── */
-  #about {
-    background: var(--smoke);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-  }
-
-  .about-text p {
-    font-size: 1rem;
-    line-height: 1.85;
-    color: rgba(245,240,232,0.7);
-    margin-bottom: 1.2rem;
-  }
-
-  .about-text p strong {
-    color: var(--cream);
-    font-weight: 500;
-  }
-
-  .about-right {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .skill-row {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .skill-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--mid);
-    min-width: 160px;
-  }
-
-  .skill-bar-bg {
-    flex: 1;
-    height: 2px;
-    background: rgba(255,255,255,0.08);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .skill-bar-fill {
-    position: absolute;
-    top: 0; left: 0;
-    height: 100%;
-    background: var(--amber);
-    width: 0;
-    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
-  }
-
-  /* ── PROJECTS ── */
-  #projects { background: var(--ink); }
-
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5px;
-  }
-
-  .project-card {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.06);
-    padding: 2.5rem 2rem;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.3s, transform 0.3s;
-  }
-
-  .project-card:hover {
-    border-color: rgba(232,160,32,0.3);
-    transform: translateY(-4px);
-  }
-
-  .project-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--amber), transparent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s;
-  }
-
-  .project-card:hover::after { transform: scaleX(1); }
-
-  .project-icon {
-    font-size: 1.8rem;
-    margin-bottom: 1.2rem;
-  }
-
-  .project-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.2rem;
-    color: var(--white);
-    margin-bottom: 0.6rem;
-  }
-
-  .project-desc {
-    font-size: 0.82rem;
-    line-height: 1.7;
-    color: rgba(245,240,232,0.55);
-    margin-bottom: 1.2rem;
-  }
-
-  .project-stat {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem;
-    color: var(--amber);
-    letter-spacing: 0.05em;
-  }
-
-  .project-stat-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--mid);
-    margin-top: 0.2rem;
-  }
-
-  /* ── EXPERIENCE TIMELINE ── */
-  #experience {
-    background: var(--smoke);
-  }
-
-  .timeline {
-    position: relative;
-    padding-left: 2rem;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 1px;
-    background: linear-gradient(to bottom, var(--amber), rgba(232,160,32,0.1));
-  }
-
-  .timeline-item {
-    position: relative;
-    padding: 0 0 3rem 2.5rem;
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: opacity 0.6s, transform 0.6s;
-  }
-
-  .timeline-item.visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  .timeline-dot {
-    position: absolute;
-    left: -2rem;
-    top: 0.2rem;
-    width: 10px; height: 10px;
-    background: var(--amber);
-    border-radius: 50%;
-    transform: translateX(-4.5px);
-  }
-
-  .timeline-period {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--amber);
-    margin-bottom: 0.4rem;
-  }
-
-  .timeline-role {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.15rem;
-    color: var(--white);
-    margin-bottom: 0.2rem;
-  }
-
-  .timeline-org {
-    font-size: 0.78rem;
-    color: var(--mid);
-    margin-bottom: 0.8rem;
-    letter-spacing: 0.05em;
-  }
-
-  .timeline-points {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-
-  .timeline-points li {
-    font-size: 0.82rem;
-    line-height: 1.6;
-    color: rgba(245,240,232,0.6);
-    padding-left: 1rem;
-    position: relative;
-  }
-
-  .timeline-points li::before {
-    content: '\2013';
-    position: absolute;
-    left: 0;
-    color: var(--amber);
-  }
-
-  /* ── CONTACT ── */
-  #contact {
-    background: var(--ink);
-    text-align: center;
-    padding: 7rem 4rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  #contact::before {
-    content: 'CONTACT';
-    position: absolute;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 20vw;
-    color: rgba(232,160,32,0.03);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    white-space: nowrap;
-  }
-
-  .contact-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    color: var(--white);
-    margin-bottom: 1rem;
-    position: relative;
-  }
-
-  .contact-sub {
-    font-size: 0.9rem;
-    color: var(--mid);
-    margin-bottom: 3rem;
-    line-height: 1.7;
-    position: relative;
-  }
-
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    position: relative;
-  }
-
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.8rem 1.5rem;
-    border: 1px solid rgba(232,160,32,0.2);
-    color: var(--cream);
-    text-decoration: none;
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-    transition: border-color 0.2s, color 0.2s, background 0.2s;
-  }
-
-  .contact-link:hover {
-    border-color: var(--amber);
-    color: var(--amber);
-    background: rgba(232,160,32,0.05);
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--smoke);
-    padding: 1.5rem 4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid rgba(255,255,255,0.05);
-  }
-
-  footer p {
-    font-size: 0.7rem;
-    color: var(--mid);
-    letter-spacing: 0.08em;
-  }
-
-  .footer-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1rem;
-    color: var(--amber);
-    letter-spacing: 0.1em;
-  }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    #hero { grid-template-columns: 1fr; }
-    .hero-right { display: none; }
-    .hero-left { padding: 7rem 2rem 4rem; }
-    #about { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 2rem; }
-    .projects-grid { grid-template-columns: 1fr; }
-    section { padding: 4rem 2rem; }
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  :root{--ink:#0a0a0a;--amber:#E8A020;--amber-dim:#c4861a;--cream:#F5F0E8;--smoke:#1a1a1a;--mid:#6b6560;--white:#ffffff;--amberdim:rgba(232,160,32,0.08);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--ink);color:var(--cream);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:0.4;}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2.5rem;background:rgba(10,10,10,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,160,32,0.15);}
+  .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.12em;color:var(--amber);}
+  .hamburger{background:none;border:none;cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:6px;z-index:300;}
+  .hamburger span{display:block;width:26px;height:2px;background:var(--amber);transition:all 0.3s;}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  /* MENU OVERLAY */
+  .menu-overlay{position:fixed;inset:0;background:var(--ink);z-index:150;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2.5rem;opacity:0;pointer-events:none;transition:opacity 0.4s;}
+  .menu-overlay.open{opacity:1;pointer-events:all;}
+  .menu-overlay a{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,8vw,4rem);color:var(--white);text-decoration:none;letter-spacing:0.08em;transition:color 0.2s;position:relative;}
+  .menu-overlay a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--amber);transition:width 0.3s;}
+  .menu-overlay a:hover{color:var(--amber);}
+  .menu-overlay a:hover::after{width:100%;}
+
+  /* HERO */
+  #hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
+  .hero-left{display:flex;flex-direction:column;justify-content:center;padding:8rem 3rem 4rem 4rem;position:relative;z-index:2;}
+  .hero-tag{font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--amber);margin-bottom:1.5rem;opacity:0;animation:fadeUp 0.8s 0.2s forwards;}
+  .hero-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,8vw,7rem);line-height:0.92;letter-spacing:0.02em;color:var(--white);opacity:0;animation:fadeUp 0.8s 0.4s forwards;}
+  .hero-name span{display:block;color:var(--amber);}
+  .hero-desc{margin-top:2rem;font-size:1rem;line-height:1.7;color:rgba(245,240,232,0.65);max-width:420px;opacity:0;animation:fadeUp 0.8s 0.6s forwards;}
+  .hero-cta{margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp 0.8s 0.8s forwards;}
+  .btn-primary{background:var(--amber);color:var(--ink);padding:0.75rem 1.8rem;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 0.2s,transform 0.2s;border:none;cursor:pointer;}
+  .btn-primary:hover{background:var(--amber-dim);transform:translateY(-2px);}
+  .btn-outline{border:1px solid rgba(232,160,32,0.4);color:var(--cream);padding:0.75rem 1.8rem;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:border-color 0.2s,color 0.2s,transform 0.2s;}
+  .btn-outline:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-2px);}
+  .hero-right{position:relative;display:flex;align-items:center;justify-content:center;}
+  .hero-bg-text{position:absolute;font-family:'Bebas Neue',sans-serif;font-size:28vw;color:rgba(232,160,32,0.04);line-height:1;right:-2vw;top:50%;transform:translateY(-50%);pointer-events:none;z-index:0;}
+  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;width:85%;max-width:380px;position:relative;z-index:2;opacity:0;animation:fadeUp 0.8s 1s forwards;}
+  .stat-card{background:rgba(255,255,255,0.03);border:1px solid rgba(232,160,32,0.12);padding:1.8rem 1.5rem;position:relative;overflow:hidden;transition:border-color 0.3s,background 0.3s;}
+  .stat-card:hover{border-color:rgba(232,160,32,0.4);background:rgba(232,160,32,0.05);}
+  .stat-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--amber);opacity:0;transition:opacity 0.3s;}
+  .stat-card:hover::before{opacity:1;}
+  .stat-number{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--amber);line-height:1;letter-spacing:0.02em;}
+  .stat-label{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);margin-top:0.4rem;line-height:1.4;}
+
+  /* SECTION BASE */
+  section{padding:6rem 4rem;}
+  .section-tag{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem;}
+  .section-title{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;color:var(--white);margin-bottom:3rem;}
+  .section-title em{font-style:italic;color:var(--amber);}
+
+  /* ABOUT */
+  #about{background:var(--smoke);display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+  .about-text p{font-size:1rem;line-height:1.85;color:rgba(245,240,232,0.7);margin-bottom:1.2rem;}
+  .about-text p strong{color:var(--cream);font-weight:500;}
+  .about-right{display:flex;flex-direction:column;gap:1rem;}
+  .skill-row{display:flex;align-items:center;gap:1rem;}
+  .skill-label{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--mid);min-width:160px;}
+  .skill-bar-bg{flex:1;height:2px;background:rgba(255,255,255,0.08);position:relative;overflow:hidden;}
+  .skill-bar-fill{position:absolute;top:0;left:0;height:100%;background:var(--amber);width:0;transition:width 1.2s cubic-bezier(0.4,0,0.2,1);}
+
+  /* SERVICES */
+  #services{background:var(--ink);}
+  .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+  .service-card{background:rgba(255,255,255,0.02);border:1px solid rgba(232,160,32,0.12);padding:2.5rem 2rem;position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.3s;}
+  .service-card:hover{border-color:rgba(232,160,32,0.4);transform:translateY(-4px);}
+  .service-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform 0.4s;}
+  .service-card:hover::after{transform:scaleX(1);}
+  .service-name{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--white);margin-bottom:0.5rem;}
+  .service-desc{font-size:0.82rem;color:rgba(245,240,232,0.5);line-height:1.6;margin-bottom:1.5rem;}
+  .service-price{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--amber);line-height:1;letter-spacing:0.02em;}
+  .service-price-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-top:0.3rem;margin-bottom:1rem;}
+  .service-note{font-size:0.75rem;color:rgba(232,160,32,0.6);margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(232,160,32,0.1);}
+  .service-full-card{grid-column:1/-1;}
+
+  /* PROJECTS */
+  #projects{background:var(--smoke);}
+  .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;}
+  .project-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);padding:2.5rem 2rem;position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.3s;}
+  .project-card:hover{border-color:rgba(232,160,32,0.3);transform:translateY(-4px);}
+  .project-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--amber),transparent);transform:scaleX(0);transform-origin:left;transition:transform 0.4s;}
+  .project-card:hover::after{transform:scaleX(1);}
+  .project-icon{font-size:1.8rem;margin-bottom:1.2rem;}
+  .project-title{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--white);margin-bottom:0.6rem;}
+  .project-desc{font-size:0.82rem;line-height:1.7;color:rgba(245,240,232,0.55);margin-bottom:1.2rem;}
+  .project-stat{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--amber);letter-spacing:0.05em;}
+  .project-stat-label{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);margin-top:0.2rem;}
+
+  /* EXPERIENCE */
+  #experience{background:var(--ink);}
+  .timeline{position:relative;padding-left:2rem;}
+  .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--amber),rgba(232,160,32,0.1));}
+  .timeline-item{position:relative;padding:0 0 3rem 2.5rem;opacity:0;transform:translateX(-20px);transition:opacity 0.6s,transform 0.6s;}
+  .timeline-item.visible{opacity:1;transform:translateX(0);}
+  .timeline-dot{position:absolute;left:-2rem;top:0.2rem;width:10px;height:10px;background:var(--amber);border-radius:50%;transform:translateX(-4.5px);}
+  .timeline-period{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);margin-bottom:0.4rem;}
+  .timeline-role{font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--white);margin-bottom:0.2rem;}
+  .timeline-org{font-size:0.78rem;color:var(--mid);margin-bottom:0.8rem;letter-spacing:0.05em;}
+  .timeline-points{list-style:none;display:flex;flex-direction:column;gap:0.4rem;}
+  .timeline-points li{font-size:0.82rem;line-height:1.6;color:rgba(245,240,232,0.6);padding-left:1rem;position:relative;}
+  .timeline-points li::before{content:'\2013';position:absolute;left:0;color:var(--amber);}
+
+  /* CONTACT */
+  #contact{background:var(--smoke);text-align:center;padding:7rem 4rem;position:relative;overflow:hidden;}
+  #contact::before{content:'CONTACT';position:absolute;font-family:'Bebas Neue',sans-serif;font-size:20vw;color:rgba(232,160,32,0.03);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;white-space:nowrap;}
+  .contact-title{font-family:'DM Serif Display',serif;font-size:clamp(2.5rem,5vw,4rem);color:var(--white);margin-bottom:1rem;position:relative;}
+  .contact-sub{font-size:0.9rem;color:var(--mid);margin-bottom:3rem;line-height:1.7;position:relative;}
+  .contact-details{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;position:relative;margin-bottom:2rem;}
+  .contact-link{display:flex;align-items:center;gap:0.5rem;padding:0.8rem 1.5rem;border:1px solid rgba(232,160,32,0.2);color:var(--cream);text-decoration:none;font-size:0.78rem;letter-spacing:0.08em;transition:border-color 0.2s,color 0.2s,background 0.2s;}
+  .contact-link:hover{border-color:var(--amber);color:var(--amber);background:rgba(232,160,32,0.05);}
+  .social-icons{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;position:relative;}
+  .social-icon{width:48px;height:48px;border:1px solid rgba(232,160,32,0.2);display:flex;align-items:center;justify-content:center;color:var(--cream);text-decoration:none;transition:all 0.2s;}
+  .social-icon:hover{border-color:var(--amber);color:var(--amber);background:rgba(232,160,32,0.05);transform:translateY(-3px);}
+  .social-icon svg{width:20px;height:20px;fill:currentColor;}
+
+  /* FOOTER */
+  footer{background:var(--ink);padding:1.5rem 4rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.05);}
+  footer p{font-size:0.7rem;color:var(--mid);letter-spacing:0.08em;}
+  .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--amber);letter-spacing:0.1em;}
+
+  /* ANIMATIONS */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s,transform 0.7s;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  /* RESPONSIVE */
+  @media(max-width:900px){
+    #hero{grid-template-columns:1fr;} .hero-right{display:none;} .hero-left{padding:7rem 2rem 4rem;}
+    #about{grid-template-columns:1fr;gap:3rem;padding:4rem 2rem;}
+    .services-grid{grid-template-columns:1fr;} .service-full-card{grid-column:1;}
+    .projects-grid{grid-template-columns:1fr;}
+    section{padding:4rem 2rem;}
+    nav{padding:1rem 1.5rem;}
+    footer{flex-direction:column;gap:0.5rem;text-align:center;}
   }
 </style>
 </head>
@@ -599,26 +149,25 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">IAG</div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MENU OVERLAY -->
+<div class="menu-overlay" id="menuOverlay">
+  <a href="#about" class="menu-link">About Me</a>
+  <a href="#services" class="menu-link">Services</a>
+  <a href="#projects" class="menu-link">Projects</a>
+  <a href="#contact" class="menu-link">Contact</a>
+</div>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-left">
-    <p class="hero-tag">Israel Alex Gyas · @alexandersayg on Instagram, TikTok & X</p>
-    <h1 class="hero-name">
-      Israel<br>
-      Alex<br>
-      <span>Gyas</span>
-    </h1>
-    <p class="hero-desc">
-      Founder of Roogency. Building youth sports communities, creating content that moves, and coordinating operations across football, basketball, fashion, and media in Nigeria — open to the world.
-    </p>
+    <p class="hero-tag">Israel Alex Gyas · @alexandersayg</p>
+    <h1 class="hero-name">Israel<br>Alex<br><span>Gyas</span></h1>
+    <p class="hero-desc">Founder of Roogency. Building youth sports communities, creating content that moves, and coordinating operations across football, basketball, fashion, and media in Nigeria — open to the world.</p>
     <div class="hero-cta">
       <a href="#projects" class="btn-primary">See My Work</a>
       <a href="#contact" class="btn-outline">Get in Touch</a>
@@ -627,22 +176,10 @@
   <div class="hero-right">
     <div class="hero-bg-text">IAG</div>
     <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-number">15M+</div>
-        <div class="stat-label">Views · 13K followers (fitness page)</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">50K+</div>
-        <div class="stat-label">Roogency content views</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">2×</div>
-        <div class="stat-label">Dean's Cup Champion</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">3+</div>
-        <div class="stat-label">Active sports projects</div>
-      </div>
+      <div class="stat-card"><div class="stat-number">15M+</div><div class="stat-label">Views · 13K followers (fitness page)</div></div>
+      <div class="stat-card"><div class="stat-number">50K+</div><div class="stat-label">Roogency content views</div></div>
+      <div class="stat-card"><div class="stat-number">2×</div><div class="stat-label">Dean's Cup Champion</div></div>
+      <div class="stat-card"><div class="stat-number">3+</div><div class="stat-label">Active sports projects</div></div>
     </div>
   </div>
 </section>
@@ -669,60 +206,94 @@
   </div>
 </section>
 
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-tag">Web Services</p>
+  <h2 class="section-title">What I <em>Offer</em></h2>
+  <div class="services-grid">
+
+    <div class="service-card reveal">
+      <h3 class="service-name">Personal Portfolio Website</h3>
+      <p class="service-desc">A clean, professional one-page site showcasing who you are, your story, your work, and your contact details. Perfect for athletes, creatives, and freelancers.</p>
+      <div class="service-price">₦30,000</div>
+      <div class="service-price-label">Starting from</div>
+      <div class="service-note">⚡ Rush delivery (24hrs) — +₦15,000</div>
+    </div>
+
+    <div class="service-card reveal">
+      <h3 class="service-name">Brand Portfolio Website</h3>
+      <p class="service-desc">Multi-section site with your logo, brand images, story, services, and contact. Built for personal brands and small creative businesses that want to look established.</p>
+      <div class="service-price">₦50,000</div>
+      <div class="service-price-label">Starting from</div>
+      <div class="service-note">⚡ Rush delivery (24hrs) — +₦15,000</div>
+    </div>
+
+    <div class="service-card reveal">
+      <h3 class="service-name">Static Business Website</h3>
+      <p class="service-desc">A professional static website for local businesses — with services, about, gallery, and contact sections. Clean, fast, and shareable with a custom domain.</p>
+      <div class="service-price">₦100,000</div>
+      <div class="service-price-label">Starting from</div>
+      <div class="service-note">⚡ Rush delivery (24hrs) — +₦25,000</div>
+    </div>
+
+    <div class="service-card reveal">
+      <h3 class="service-name">Full Business Website</h3>
+      <p class="service-desc">Multi-page business website with advanced features — e-commerce, booking, contact forms, CMS, and more. Scope and pricing determined by project requirements.</p>
+      <div class="service-price">₦350,000+</div>
+      <div class="service-price-label">Depending on features & scope</div>
+      <div class="service-note">⚡ Rush delivery (24hrs) — +₦25,000</div>
+    </div>
+
+  </div>
+</section>
+
 <!-- PROJECTS -->
 <section id="projects">
   <p class="section-tag">What I've Built</p>
   <h2 class="section-title">Active <em>Projects</em></h2>
   <div class="projects-grid">
-
-    <div class="project-card">
-      <div class="project-icon"><img src="roogency-fc.png" alt="Roogency FC" style="width:64px; height:64px; border-radius:50%; object-fit:cover; border: 2px solid #E8A020;"></div>
+    <div class="project-card reveal">
+      <div class="project-icon"><img src="roogency-fc.png" alt="Roogency FC" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid #E8A020;"></div>
       <h3 class="project-title">Roogency FC</h3>
       <p class="project-desc">Founded in 2025. A football club built on content and community. Playing games, producing media, and giving young players a platform to be seen.</p>
       <div class="project-stat">50K+</div>
       <div class="project-stat-label">Views across 14 videos</div>
     </div>
-
-    <div class="project-card">
+    <div class="project-card reveal">
       <div class="project-icon">🏆</div>
       <h3 class="project-title">7-Aside Tournament</h3>
       <p class="project-desc">Organising a full grassroots football tournament — logistics, sponsorship, ticketing, vendor coordination, and media coverage all in-house.</p>
       <div class="project-stat">2026</div>
       <div class="project-stat-label">Currently in planning</div>
     </div>
-
-    <div class="project-card">
+    <div class="project-card reveal">
       <div class="project-icon">🏀</div>
       <h3 class="project-title">Basketball Visibility Project</h3>
       <p class="project-desc">Launched 2026. Creating content with a basketball team to build their audience and open doors for young players who'd otherwise go unseen.</p>
       <div class="project-stat">New</div>
       <div class="project-stat-label">Launched this year</div>
     </div>
-
-    <div class="project-card">
+    <div class="project-card reveal">
       <div class="project-icon">📱</div>
       <h3 class="project-title">Fitness Page — Sold</h3>
-      <p class="project-desc">Built a fitness niche content page from zero to 13K followers and over 15 million total views. Four videos each crossed 1 million views. Sold the account to a Canadian calisthenics brand.</p>
+      <p class="project-desc">Built a fitness niche content page from zero to 13K followers and over 15 million total views. Four videos each crossed 1 million views. Sold to a Canadian calisthenics brand.</p>
       <div class="project-stat">15M+</div>
       <div class="project-stat-label">Total views · Account sold</div>
     </div>
-
-    <div class="project-card">
+    <div class="project-card reveal">
       <div class="project-icon">👟</div>
       <h3 class="project-title">Fashion Content Project</h3>
       <p class="project-desc">Launching later in 2026 under Roogency — focused on giving upcoming Nigerian fashionistas visibility through dedicated content and media coverage.</p>
       <div class="project-stat">2026</div>
       <div class="project-stat-label">Coming soon</div>
     </div>
-
-    <div class="project-card">
+    <div class="project-card reveal">
       <div class="project-icon">🎓</div>
       <h3 class="project-title">Dean's Cup — Head Coach</h3>
       <p class="project-desc">Coached the Faculty of Mass Communication & Media Studies football team at Kaduna State University. Won the Dean's Cup back-to-back in 2024 and 2025.</p>
       <div class="project-stat">2× 🏆</div>
       <div class="project-stat-label">2024 & 2025 Champions</div>
     </div>
-
   </div>
 </section>
 
@@ -731,7 +302,6 @@
   <p class="section-tag">Career</p>
   <h2 class="section-title">Where I've <em>Been</em></h2>
   <div class="timeline">
-
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <p class="timeline-period">2023 – Present</p>
@@ -743,7 +313,6 @@
         <li>Coordinating athletes, designers, photographers, and videographers across live projects</li>
       </ul>
     </div>
-
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <p class="timeline-period">2025 – Present</p>
@@ -754,18 +323,17 @@
         <li>Building content strategy that gives young athletes visibility and a platform</li>
       </ul>
     </div>
-
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <p class="timeline-period">2024</p>
       <h3 class="timeline-role">Social Media Growth Manager</h3>
       <p class="timeline-org">Self-employed</p>
       <ul class="timeline-points">
-        <li>Grew fitness niche page from zero to 15M+ total views — four individual videos crossed 1M views each</li>
+        <li>Grew fitness niche page from zero to 13K followers and 15M+ total views</li>
+        <li>Four individual videos each crossed 1 million views</li>
         <li>Sold the account to a Canadian calisthenics brand</li>
       </ul>
     </div>
-
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <p class="timeline-period">2022 – 2025</p>
@@ -776,7 +344,6 @@
         <li>Managed team selection, training, and match-day operations</li>
       </ul>
     </div>
-
   </div>
 </section>
 
@@ -784,11 +351,16 @@
 <section id="contact">
   <h2 class="contact-title">Let's Work Together</h2>
   <p class="contact-sub">Open to remote roles in sports operations, content, community, and project management.<br>Based in Nigeria. Available worldwide.</p>
-  <div class="contact-links">
+  <div class="contact-details">
     <a href="mailto:israelgyasalex@gmail.com" class="contact-link">✉ israelgyasalex@gmail.com</a>
-    <a href="https://linkedin.com/in/alexandersayg" target="_blank" class="contact-link">in LinkedIn</a>
     <a href="tel:+2348034205189" class="contact-link">📞 +234 803 420 5189</a>
-    <a href="https://instagram.com/alexandersayg" target="_blank" class="contact-link">@ alexandersayg</a>
+  </div>
+  <div class="social-icons">
+    <a href="https://github.com/alexandersayg" target="_blank" class="social-icon" title="GitHub"><svg viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
+    <a href="https://www.instagram.com/alexandersayg" target="_blank" class="social-icon" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+    <a href="https://x.com/alexandersayg" target="_blank" class="social-icon" title="X (Twitter)"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.261 5.636 5.903-5.636zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="https://www.tiktok.com/@alexandersayg" target="_blank" class="social-icon" title="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg></a>
+    <a href="https://www.linkedin.com/in/alexandersayg" target="_blank" class="social-icon" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
   </div>
 </section>
 
@@ -799,34 +371,46 @@
 </footer>
 
 <script>
-  // ── Skill bar animation on scroll ──
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const menuOverlay = document.getElementById('menuOverlay');
+  const menuLinks = document.querySelectorAll('.menu-link');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    menuOverlay.classList.toggle('open');
+    document.body.style.overflow = menuOverlay.classList.contains('open') ? 'hidden' : '';
+  });
+  menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      menuOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Skill bars
   const bars = document.querySelectorAll('.skill-bar-fill');
   const aboutSection = document.querySelector('#about');
-
   const skillObs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        bars.forEach(bar => {
-          bar.style.width = bar.dataset.width + '%';
-        });
-        skillObs.disconnect();
-      }
+      if (e.isIntersecting) { bars.forEach(bar => { bar.style.width = bar.dataset.width + '%'; }); skillObs.disconnect(); }
     });
   }, { threshold: 0.3 });
-
   if (aboutSection) skillObs.observe(aboutSection);
 
-  // ── Timeline item reveal on scroll ──
+  // Timeline reveal
   const timelineItems = document.querySelectorAll('.timeline-item');
   const timelineObs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 150);
-      }
-    });
+    entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 150); });
   }, { threshold: 0.2 });
-
   timelineItems.forEach(item => timelineObs.observe(item));
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 100); });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => revealObs.observe(r));
 </script>
 </body>
 </html>
