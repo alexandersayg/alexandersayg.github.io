@@ -70,6 +70,19 @@
 
   /* SERVICES */
   #services{background:var(--ink);}
+  .service-intro{font-size:0.95rem;line-height:1.85;color:rgba(245,240,232,0.65);max-width:680px;margin-bottom:3rem;}
+  .strategist-tiers{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem;}
+  .strategist-card{background:rgba(232,160,32,0.03);border:1px solid rgba(232,160,32,0.2);padding:2.5rem 2rem;position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.3s;}
+  .strategist-card:hover{border-color:rgba(232,160,32,0.5);transform:translateY(-4px);}
+  .strategist-name{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--white);margin-bottom:0.3rem;}
+  .strategist-sub{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--amber);margin-bottom:1.5rem;}
+  .strategist-price{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;color:var(--amber);line-height:1;letter-spacing:0.01em;}
+  .strategist-price-label{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);margin-top:0.3rem;margin-bottom:1.5rem;}
+  .strategist-list{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+  .strategist-list li{font-size:0.82rem;line-height:1.6;color:rgba(245,240,232,0.65);padding-left:1.1rem;position:relative;}
+  .strategist-list li::before{content:'\2013';position:absolute;left:0;color:var(--amber);}
+  .strategist-list li strong{color:var(--cream);font-weight:500;}
+
   .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}
   .service-card{background:rgba(255,255,255,0.02);border:1px solid rgba(232,160,32,0.12);padding:2.5rem 2rem;position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.3s;}
   .service-card:hover{border-color:rgba(232,160,32,0.4);transform:translateY(-4px);}
@@ -137,6 +150,7 @@
     #hero{grid-template-columns:1fr;} .hero-right{display:none;} .hero-left{padding:7rem 2rem 4rem;}
     #about{grid-template-columns:1fr;gap:3rem;padding:4rem 2rem;}
     .services-grid{grid-template-columns:1fr;} .service-full-card{grid-column:1;}
+    .strategist-tiers{grid-template-columns:1fr;}
     .projects-grid{grid-template-columns:1fr;}
     section{padding:4rem 2rem;}
     nav{padding:1rem 1.5rem;}
@@ -157,8 +171,8 @@
 <!-- MENU OVERLAY -->
 <div class="menu-overlay" id="menuOverlay">
   <a href="#about" class="menu-link">About Me</a>
-  <a href="#services" class="menu-link">Services</a>
   <a href="#projects" class="menu-link">Projects</a>
+  <a href="#services" class="menu-link">Services</a>
   <a href="#contact" class="menu-link">Contact</a>
 </div>
 
@@ -203,47 +217,6 @@
     <div class="skill-row"><span class="skill-label">Social Media Growth</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92"></div></div></div>
     <div class="skill-row"><span class="skill-label">Project Management</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="75"></div></div></div>
     <div class="skill-row"><span class="skill-label">Product Management</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="45"></div></div></div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services">
-  <p class="section-tag">Web Services</p>
-  <h2 class="section-title">What I <em>Offer</em></h2>
-  <div class="services-grid">
-
-    <div class="service-card reveal">
-      <h3 class="service-name">Personal Portfolio Website</h3>
-      <p class="service-desc">A clean, professional one-page site showcasing who you are, your story, your work, and your contact details. Perfect for athletes, creatives, and freelancers.</p>
-      <div class="service-price">₦30,000</div>
-      <div class="service-price-label">Starting from</div>
-      <div class="service-note">⚡ Rush delivery (24hrs) — +₦15,000</div>
-    </div>
-
-    <div class="service-card reveal">
-      <h3 class="service-name">Brand Portfolio Website</h3>
-      <p class="service-desc">Multi-section site with your logo, brand images, story, services, and contact. Built for personal brands and small creative businesses that want to look established.</p>
-      <div class="service-price">₦50,000</div>
-      <div class="service-price-label">Starting from</div>
-      <div class="service-note">⚡ Rush delivery (24hrs) — +₦15,000</div>
-    </div>
-
-    <div class="service-card reveal">
-      <h3 class="service-name">Static Business Website</h3>
-      <p class="service-desc">A professional static website for local businesses — with services, about, gallery, and contact sections. Clean, fast, and shareable with a custom domain.</p>
-      <div class="service-price">₦100,000</div>
-      <div class="service-price-label">Starting from</div>
-      <div class="service-note">⚡ Rush delivery (24hrs) — +₦25,000</div>
-    </div>
-
-    <div class="service-card reveal">
-      <h3 class="service-name">Full Business Website</h3>
-      <p class="service-desc">Multi-page business website with advanced features — e-commerce, booking, contact forms, CMS, and more. Scope and pricing determined by project requirements.</p>
-      <div class="service-price">₦350,000+</div>
-      <div class="service-price-label">Depending on features & scope</div>
-      <div class="service-note">⚡ Rush delivery (24hrs) — +₦25,000</div>
-    </div>
-
   </div>
 </section>
 
@@ -294,6 +267,79 @@
       <div class="project-stat">2× 🏆</div>
       <div class="project-stat-label">2024 & 2025 Champions</div>
     </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-tag">Brand Growth Strategy</p>
+  <h2 class="section-title">Brand <em>Strategist</em></h2>
+  <p class="service-intro">I help brands grow through strategy, not just content. I coordinate shoots, direct creative teams, and build the systems that make a brand's social presence actually work — the same way I did for a local thrift store brand, bringing in photographers, videographers, and models, and shaping their content direction end to end.</p>
+
+  <div class="strategist-tiers">
+    <div class="strategist-card reveal">
+      <h3 class="strategist-name">Monthly Retainer</h3>
+      <p class="strategist-sub">Full Brand Management</p>
+      <div class="strategist-price">₦150,000 – ₦250,000</div>
+      <div class="strategist-price-label">per month</div>
+      <ul class="strategist-list">
+        <li>Content direction and planning</li>
+        <li>Shoot coordination</li>
+        <li>Creative team management</li>
+        <li>Editing oversight and final review</li>
+        <li>Monthly performance review</li>
+      </ul>
+    </div>
+
+    <div class="strategist-card reveal">
+      <h3 class="strategist-name">Project-Based</h3>
+      <p class="strategist-sub">Choose one engagement</p>
+      <div class="strategist-price">₦100,000 – ₦180,000</div>
+      <div class="strategist-price-label">per project</div>
+      <ul class="strategist-list">
+        <li><strong>2-Week Content Overhaul</strong> — fresh content plan, 1–2 coordinated shoots, edited deliverables, posting guide</li>
+        <li><strong>Single Shoot Day</strong> — one full day, fully coordinated and directed, edited content delivered</li>
+        <li><strong>Strategy + 30-Day Support</strong> — written content roadmap plus 30 days of execution guidance</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="section-tag" style="margin-top:4rem;">Web Services</p>
+  <h2 class="section-title">What I <em>Build</em></h2>
+  <div class="services-grid">
+
+    <div class="service-card reveal">
+      <h3 class="service-name">Personal Portfolio Website</h3>
+      <p class="service-desc">A clean, professional one-page site showcasing who you are, your story, your work, and your contact details. Perfect for athletes, creatives, and freelancers.</p>
+      <div class="service-price">₦30,000</div>
+      <div class="service-price-label">Starting from</div>
+      <div class="service-note">⚡ Rush delivery (24hrs) — +₦15,000</div>
+    </div>
+
+    <div class="service-card reveal">
+      <h3 class="service-name">Brand Portfolio Website</h3>
+      <p class="service-desc">Multi-section site with your logo, brand images, story, services, and contact. Built for personal brands and small creative businesses that want to look established.</p>
+      <div class="service-price">₦50,000</div>
+      <div class="service-price-label">Starting from</div>
+      <div class="service-note">⚡ Rush delivery (24hrs) — +₦15,000</div>
+    </div>
+
+    <div class="service-card reveal">
+      <h3 class="service-name">Static Business Website</h3>
+      <p class="service-desc">A professional static website for local businesses — with services, about, gallery, and contact sections. Clean, fast, and shareable with a custom domain.</p>
+      <div class="service-price">₦100,000</div>
+      <div class="service-price-label">Starting from</div>
+      <div class="service-note">⚡ Rush delivery (24hrs) — +₦25,000</div>
+    </div>
+
+    <div class="service-card reveal">
+      <h3 class="service-name">Full Business Website</h3>
+      <p class="service-desc">Multi-page business website with advanced features — e-commerce, booking, contact forms, CMS, and more. Scope and pricing determined by project requirements.</p>
+      <div class="service-price">₦350,000+</div>
+      <div class="service-price-label">Depending on features & scope</div>
+      <div class="service-note">⚡ Rush delivery (24hrs) — +₦25,000</div>
+    </div>
+
   </div>
 </section>
 
