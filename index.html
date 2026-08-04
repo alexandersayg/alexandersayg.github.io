@@ -67,6 +67,8 @@
   .skill-label{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--mid);min-width:160px;}
   .skill-bar-bg{flex:1;height:2px;background:rgba(255,255,255,0.08);position:relative;overflow:hidden;}
   .skill-bar-fill{position:absolute;top:0;left:0;height:100%;background:var(--amber);width:0;transition:width 1.2s cubic-bezier(0.4,0,0.2,1);}
+  .tools-row{display:flex;flex-wrap:wrap;gap:0.6rem;}
+  .tool-chip{font-size:0.72rem;letter-spacing:0.05em;color:var(--cream);border:1px solid rgba(232,160,32,0.25);padding:0.5rem 1rem;background:rgba(232,160,32,0.04);}
 
   /* SERVICES */
   #services{background:var(--ink);}
@@ -95,6 +97,23 @@
   .service-note{font-size:0.75rem;color:rgba(232,160,32,0.6);margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(232,160,32,0.1);}
   .service-full-card{grid-column:1/-1;}
 
+  /* RATE CARDS */
+  .rate-cards{display:flex;flex-direction:column;gap:1.2rem;}
+  .rate-card{border:1px solid rgba(232,160,32,0.25);background:rgba(255,255,255,0.015);transition:border-color 0.3s,transform 0.3s;}
+  .rate-card:hover{border-color:rgba(232,160,32,0.55);transform:translateY(-3px);}
+  .rate-card-inner{display:grid;grid-template-columns:1fr 1.7fr;gap:0;}
+  .rate-left{padding:2.2rem 1.8rem;border-right:1px solid rgba(232,160,32,0.15);}
+  .rate-tier{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--amber);margin-bottom:0.8rem;}
+  .rate-name{font-family:'DM Serif Display',serif;font-size:1.4rem;line-height:1.25;color:var(--white);margin-bottom:1.2rem;}
+  .rate-price{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;color:var(--amber);letter-spacing:0.02em;text-shadow:0 0 18px rgba(232,160,32,0.35);}
+  .rate-right{padding:2.2rem 2rem;}
+  .rate-desc{font-size:0.82rem;font-style:italic;color:rgba(245,240,232,0.5);line-height:1.7;margin-bottom:1.2rem;}
+  .rate-list{list-style:none;display:flex;flex-direction:column;gap:0.55rem;margin-bottom:1.2rem;}
+  .rate-list li{font-size:0.85rem;color:rgba(245,240,232,0.85);padding-left:1.2rem;position:relative;}
+  .rate-list li::before{content:'\2013';position:absolute;left:0;color:var(--amber);}
+  .rate-rush{font-size:0.75rem;color:rgba(232,160,32,0.7);padding-top:1rem;border-top:1px solid rgba(232,160,32,0.12);}
+  .rate-rush strong{color:var(--amber);}
+
   /* PROJECTS */
   #projects{background:var(--smoke);}
   .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;}
@@ -121,6 +140,26 @@
   .timeline-points{list-style:none;display:flex;flex-direction:column;gap:0.4rem;}
   .timeline-points li{font-size:0.82rem;line-height:1.6;color:rgba(245,240,232,0.6);padding-left:1rem;position:relative;}
   .timeline-points li::before{content:'\2013';position:absolute;left:0;color:var(--amber);}
+
+  /* TESTIMONIALS */
+  #testimonials{background:var(--smoke);}
+  .testimonial-card{max-width:780px;border:1px solid rgba(232,160,32,0.2);background:rgba(255,255,255,0.02);padding:3rem 2.5rem;position:relative;}
+  .testimonial-quote-mark{font-family:'DM Serif Display',serif;font-size:4rem;color:rgba(232,160,32,0.3);line-height:1;margin-bottom:0.5rem;}
+  .testimonial-text{font-size:1rem;line-height:1.9;color:rgba(245,240,232,0.85);font-style:italic;margin-bottom:2rem;}
+  .testimonial-author{display:flex;align-items:center;gap:1rem;border-top:1px solid rgba(232,160,32,0.15);padding-top:1.5rem;}
+  .testimonial-avatar{width:44px;height:44px;border-radius:50%;background:var(--amber);color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;flex-shrink:0;}
+  .testimonial-name{font-size:0.9rem;color:var(--white);font-weight:500;}
+  .testimonial-role{font-size:0.72rem;color:var(--amber);letter-spacing:0.05em;margin-top:0.15rem;}
+
+  /* FLOATING WHATSAPP */
+  .wa-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:250;display:flex;align-items:center;gap:0.6rem;background:var(--amber);color:var(--ink);text-decoration:none;padding:0.85rem 1.3rem;border-radius:50px;box-shadow:0 8px 24px rgba(232,160,32,0.35);transition:transform 0.25s,box-shadow 0.25s;}
+  .wa-float:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 12px 30px rgba(232,160,32,0.45);}
+  .wa-float svg{width:22px;height:22px;fill:var(--ink);flex-shrink:0;}
+  .wa-float span{font-size:0.78rem;font-weight:600;letter-spacing:0.02em;white-space:nowrap;}
+  @media(max-width:600px){
+    .wa-float span{display:none;}
+    .wa-float{padding:0.9rem;border-radius:50%;}
+  }
 
   /* CONTACT */
   #contact{background:var(--smoke);text-align:center;padding:7rem 4rem;position:relative;overflow:hidden;}
@@ -151,6 +190,8 @@
     #about{grid-template-columns:1fr;gap:3rem;padding:4rem 2rem;}
     .services-grid{grid-template-columns:1fr;} .service-full-card{grid-column:1;}
     .strategist-tiers{grid-template-columns:1fr;}
+    .rate-card-inner{grid-template-columns:1fr;}
+    .rate-left{border-right:none;border-bottom:1px solid rgba(232,160,32,0.15);}
     .projects-grid{grid-template-columns:1fr;}
     section{padding:4rem 2rem;}
     nav{padding:1rem 1.5rem;}
@@ -173,6 +214,7 @@
   <a href="#about" class="menu-link">About Me</a>
   <a href="#projects" class="menu-link">Projects</a>
   <a href="#services" class="menu-link">Services</a>
+  <a href="#testimonials" class="menu-link">Reviews</a>
   <a href="#contact" class="menu-link">Contact</a>
 </div>
 
@@ -209,14 +251,19 @@
   </div>
   <div class="about-right">
     <p class="section-tag">Core Skills</p>
-    <div class="skill-row"><span class="skill-label">Sports Event Coordination</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88"></div></div></div>
-    <div class="skill-row"><span class="skill-label">Content Strategy</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90"></div></div></div>
     <div class="skill-row"><span class="skill-label">Community Management</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85"></div></div></div>
-    <div class="skill-row"><span class="skill-label">Campaign & Promotions</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80"></div></div></div>
-    <div class="skill-row"><span class="skill-label">Partnership Outreach</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="78"></div></div></div>
+    <div class="skill-row"><span class="skill-label">Sports Operations</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88"></div></div></div>
     <div class="skill-row"><span class="skill-label">Social Media Growth</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92"></div></div></div>
     <div class="skill-row"><span class="skill-label">Project Management</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="75"></div></div></div>
     <div class="skill-row"><span class="skill-label">Product Management</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="45"></div></div></div>
+
+    <p class="section-tag" style="margin-top:2.5rem;">Tools</p>
+    <div class="tools-row">
+      <span class="tool-chip">Asana</span>
+      <span class="tool-chip">Notion</span>
+      <span class="tool-chip">CapCut</span>
+      <span class="tool-chip">Google Workspace</span>
+    </div>
   </div>
 </section>
 
@@ -233,17 +280,10 @@
       <div class="project-stat-label">Views across 14 videos</div>
     </div>
     <div class="project-card reveal">
-      <div class="project-icon">🏆</div>
-      <h3 class="project-title">7-Aside Tournament</h3>
-      <p class="project-desc">Organising a full grassroots football tournament — logistics, sponsorship, ticketing, vendor coordination, and media coverage all in-house.</p>
-      <div class="project-stat">2026</div>
-      <div class="project-stat-label">Currently in planning</div>
-    </div>
-    <div class="project-card reveal">
       <div class="project-icon">🏀</div>
       <h3 class="project-title">Basketball Visibility Project</h3>
       <p class="project-desc">Launched 2026. Creating content with a basketball team to build their audience and open doors for young players who'd otherwise go unseen.</p>
-      <div class="project-stat">New</div>
+      <div class="project-stat">2026</div>
       <div class="project-stat-label">Launched this year</div>
     </div>
     <div class="project-card reveal">
@@ -256,9 +296,9 @@
     <div class="project-card reveal">
       <div class="project-icon">👟</div>
       <h3 class="project-title">Fashion Content Project</h3>
-      <p class="project-desc">Launching later in 2026 under Roogency — focused on giving upcoming Nigerian fashionistas visibility through dedicated content and media coverage.</p>
-      <div class="project-stat">2026</div>
-      <div class="project-stat-label">Coming soon</div>
+      <p class="project-desc">Upcoming project under Roogency — focused on giving upcoming Nigerian fashionistas visibility through dedicated content and media coverage.</p>
+      <div class="project-stat">2027</div>
+      <div class="project-stat-label">Upcoming project</div>
     </div>
     <div class="project-card reveal">
       <div class="project-icon">🎓</div>
@@ -304,42 +344,86 @@
     </div>
   </div>
 
-  <p class="section-tag" style="margin-top:4rem;">Web Services</p>
-  <h2 class="section-title">What I <em>Build</em></h2>
-  <div class="services-grid">
+  <p class="section-tag" style="margin-top:4rem;">Web Design</p>
+  <h2 class="section-title">Rates & <em>Services</em></h2>
+  <div class="rate-cards">
 
-    <div class="service-card reveal">
-      <h3 class="service-name">Personal Portfolio Website</h3>
-      <p class="service-desc">A clean, professional one-page site showcasing who you are, your story, your work, and your contact details. Perfect for athletes, creatives, and freelancers.</p>
-      <div class="service-price">₦30,000</div>
-      <div class="service-price-label">Starting from</div>
-      <div class="service-note">⚡ Rush delivery (24hrs) — +₦15,000</div>
+    <div class="rate-card reveal">
+      <div class="rate-card-inner">
+        <div class="rate-left">
+          <p class="rate-tier">Starter</p>
+          <h3 class="rate-name">Personal<br>Portfolio</h3>
+          <div class="rate-price">₦30,000</div>
+        </div>
+        <div class="rate-right">
+          <p class="rate-desc">A clean site for athletes, creatives, freelancers & students. No custom domain included.</p>
+          <ul class="rate-list">
+            <li>Your story & bio</li>
+            <li>Portfolio of work</li>
+            <li>Contact details</li>
+          </ul>
+          <div class="rate-rush">Rush delivery (24 hrs): <strong>+₦15,000</strong></div>
+        </div>
+      </div>
     </div>
 
-    <div class="service-card reveal">
-      <h3 class="service-name">Brand Portfolio Website</h3>
-      <p class="service-desc">Multi-section site with your logo, brand images, story, services, and contact. Built for personal brands and small creative businesses that want to look established.</p>
-      <div class="service-price">₦50,000</div>
-      <div class="service-price-label">Starting from</div>
-      <div class="service-note">⚡ Rush delivery (24hrs) — +₦15,000</div>
+    <div class="rate-card reveal">
+      <div class="rate-card-inner">
+        <div class="rate-left">
+          <p class="rate-tier">Business</p>
+          <h3 class="rate-name">Business<br>Website</h3>
+          <div class="rate-price">₦100,000</div>
+        </div>
+        <div class="rate-right">
+          <p class="rate-desc">A professional site for any brand or business. Custom domain included.</p>
+          <ul class="rate-list">
+            <li>Custom domain included</li>
+            <li>Services / product showcase</li>
+            <li>Photo gallery</li>
+            <li>WhatsApp order cart</li>
+          </ul>
+          <div class="rate-rush">Rush delivery (24 hrs): <strong>+₦25,000</strong></div>
+        </div>
+      </div>
     </div>
 
-    <div class="service-card reveal">
-      <h3 class="service-name">Static Business Website</h3>
-      <p class="service-desc">A professional static website for local businesses — with services, about, gallery, and contact sections. Clean, fast, and shareable with a custom domain.</p>
-      <div class="service-price">₦100,000</div>
-      <div class="service-price-label">Starting from</div>
-      <div class="service-note">⚡ Rush delivery (24hrs) — +₦25,000</div>
+    <div class="rate-card reveal">
+      <div class="rate-card-inner">
+        <div class="rate-left">
+          <p class="rate-tier">Premium</p>
+          <h3 class="rate-name">Full Business<br>Website</h3>
+          <div class="rate-price">₦350,000+</div>
+        </div>
+        <div class="rate-right">
+          <p class="rate-desc">A full-featured site with advanced functionality, scoped to your business.</p>
+          <ul class="rate-list">
+            <li>E-commerce & booking</li>
+            <li>Login / member access</li>
+            <li>Content management (CMS)</li>
+            <li>Custom domain included</li>
+          </ul>
+          <div class="rate-rush">Rush delivery: <strong>Depending on scope</strong></div>
+        </div>
+      </div>
     </div>
 
-    <div class="service-card reveal">
-      <h3 class="service-name">Full Business Website</h3>
-      <p class="service-desc">Multi-page business website with advanced features — e-commerce, booking, contact forms, CMS, and more. Scope and pricing determined by project requirements.</p>
-      <div class="service-price">₦350,000+</div>
-      <div class="service-price-label">Depending on features & scope</div>
-      <div class="service-note">⚡ Rush delivery (24hrs) — +₦25,000</div>
-    </div>
+  </div>
+</section>
 
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <p class="section-tag">Client Words</p>
+  <h2 class="section-title">What They <em>Say</em></h2>
+  <div class="testimonial-card reveal">
+    <div class="testimonial-quote-mark">"</div>
+    <p class="testimonial-text">I don't usually leave testimonials, but I genuinely enjoyed working with you. From start to finish, you were calm, patient, and incredibly easy to work with. What stood out most was how confidently you handled everything — you took the time to understand my brand and delivered exactly what I needed. You made the entire process stress-free, listened to my needs, and delivered beyond my expectations. I'd definitely work with you again and wouldn't hesitate to recommend you to others.</p>
+    <div class="testimonial-author">
+      <div class="testimonial-avatar">HJ</div>
+      <div>
+        <div class="testimonial-name">Hauwa Jibril</div>
+        <div class="testimonial-role">Founder, Cosy Treasures</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -355,7 +439,6 @@
       <p class="timeline-org">Roogency — Nigeria (Remote)</p>
       <ul class="timeline-points">
         <li>Built a youth sports and media initiative covering football, basketball, and creative talent</li>
-        <li>Organising a 7-aside football tournament end-to-end — logistics, sponsors, ticketing, and media</li>
         <li>Coordinating athletes, designers, photographers, and videographers across live projects</li>
       </ul>
     </div>
@@ -397,11 +480,11 @@
 <section id="contact">
   <h2 class="contact-title">Let's Work Together</h2>
   <p class="contact-sub">Open to remote roles in sports operations, content, community, and project management.<br>Based in Nigeria. Available worldwide.</p>
-  <div class="contact-details">
-    <a href="mailto:israelgyasalex@gmail.com" class="contact-link">✉ israelgyasalex@gmail.com</a>
-    <a href="tel:+2348034205189" class="contact-link">📞 +234 803 420 5189</a>
-  </div>
   <div class="social-icons">
+    <a href="mailto:alexandersayg@gmail.com" class="social-icon" title="Email"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+    <a href="https://wa.me/2348034205189" target="_blank" class="social-icon" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.002 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg></a>
+  </div>
+  <div class="social-icons" style="margin-top:1.2rem;">
     <a href="https://github.com/alexandersayg" target="_blank" class="social-icon" title="GitHub"><svg viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
     <a href="https://www.instagram.com/alexandersayg" target="_blank" class="social-icon" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
     <a href="https://x.com/alexandersayg" target="_blank" class="social-icon" title="X (Twitter)"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.261 5.636 5.903-5.636zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
@@ -409,6 +492,12 @@
     <a href="https://www.linkedin.com/in/alexandersayg" target="_blank" class="social-icon" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
   </div>
 </section>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/2348034205189" target="_blank" class="wa-float">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.002 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+  <span>Say less, SAYG it</span>
+</a>
 
 <!-- FOOTER -->
 <footer>
