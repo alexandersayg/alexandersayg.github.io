@@ -73,12 +73,6 @@
   .about-text p{font-size:1rem;line-height:1.8;color:rgba(245,240,232,0.72);margin-bottom:1.1rem;}
   .about-text p strong{color:var(--cream);font-weight:500;}
   .about-right{display:flex;flex-direction:column;gap:1rem;}
-  .skill-row{display:flex;align-items:center;gap:1rem;}
-  .skill-label{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--mid);min-width:160px;}
-  .skill-bar-bg{flex:1;height:2px;background:rgba(255,255,255,0.08);position:relative;overflow:hidden;}
-  .skill-bar-fill{position:absolute;top:0;left:0;height:100%;background:var(--amber);width:0;transition:width 1.2s cubic-bezier(0.4,0,0.2,1);}
-  .tools-row{display:flex;flex-wrap:wrap;gap:0.6rem;}
-  .tool-chip{font-size:0.72rem;letter-spacing:0.05em;color:var(--cream);border:1px solid rgba(232,160,32,0.25);padding:0.5rem 1rem;background:rgba(232,160,32,0.04);}
 
   /* PROJECTS */
   #projects{background:var(--ink);}
@@ -105,17 +99,6 @@
   /* SERVICES */
   #services{background:var(--smoke);}
   .service-intro{font-size:0.95rem;line-height:1.8;color:rgba(245,240,232,0.68);max-width:700px;margin-bottom:2.2rem;}
-  .price-group{margin-bottom:2rem;}
-  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
-  .price-card{background:rgba(232,160,32,0.03);border:1px solid rgba(232,160,32,0.2);padding:1.7rem 1.5rem;transition:border-color 0.3s,transform 0.3s;}
-  .price-card:hover{border-color:rgba(232,160,32,0.5);transform:translateY(-3px);}
-  .price-name{font-family:'DM Serif Display',serif;font-size:1.2rem;line-height:1.25;color:var(--white);margin-bottom:0.8rem;}
-  .price-amount{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;color:var(--amber);letter-spacing:0.02em;line-height:1;}
-  .price-unit{font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);margin:0.35rem 0 1rem;}
-  .price-desc{font-size:0.82rem;line-height:1.7;color:rgba(245,240,232,0.62);}
-  .audit-card{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;}
-  .audit-card .price-name{margin-bottom:0.3rem;}
-  .audit-card .price-unit{margin:0;}
   .addons{display:flex;flex-wrap:wrap;gap:0.6rem;}
   .addon-chip{font-size:0.74rem;letter-spacing:0.04em;color:var(--cream);border:1px solid rgba(232,160,32,0.3);padding:0.55rem 1rem;background:rgba(232,160,32,0.05);}
   .pricing-notes{font-size:0.78rem;line-height:1.8;color:var(--mid);border-top:1px solid rgba(232,160,32,0.15);padding-top:1.2rem;margin-top:0.5rem;}
@@ -188,7 +171,6 @@
     .hero-bg-text{display:none;}
     section{padding:3rem 1.5rem;}
     #about{grid-template-columns:minmax(0,1fr);gap:2.2rem;}
-    .skill-label{min-width:135px;}
     .featured-grid,.projects-grid,.price-grid{grid-template-columns:minmax(0,1fr);}
     .featured-card{padding:1.8rem 1.4rem;}
     #contact{padding:3.5rem 1.5rem;}
@@ -267,6 +249,143 @@
   }
   .hero-left,.hero-right,.about-text,.about-right,.featured-card,.price-card,.project-card{min-width:0;}
   .hero-desc,.featured-list li,.price-desc,.stat-label{overflow-wrap:anywhere;}
+
+  /* HERO HIGHLIGHTS (v3) */
+  .stats-wrap{width:100%;max-width:400px;position:relative;z-index:2;}
+  .stat-unit{font-size:0.74rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--cream);margin-top:0.35rem;font-weight:500;}
+  .stat-card .stat-label{margin-top:0.3rem;text-transform:none;letter-spacing:0.02em;font-size:0.74rem;}
+  .stats-note{margin-top:0.9rem;font-size:0.68rem;line-height:1.6;letter-spacing:0.04em;color:var(--mid);opacity:0;animation:fadeUp 0.8s 1.2s forwards;}
+
+  /* ROOGENCY CARD (wide) */
+  .featured-card.featured-wide{grid-column:1/-1;}
+  .featured-wide-inner{display:grid;grid-template-columns:1fr 1.2fr;gap:2rem;align-items:start;}
+  .featured-wide-inner .btn-case{margin-top:1.2rem;}
+
+  /* ROOGENCY PROJECT PAGE */
+  .rg-hero{position:relative;overflow:hidden;padding:3rem 1.5rem 2.5rem;border-bottom:1px solid rgba(232,160,32,0.15);background:radial-gradient(ellipse at 85% 0%,rgba(232,160,32,0.16),transparent 58%),var(--ink);}
+  .rg-hero-inner{max-width:980px;margin:0 auto;}
+  .rg-symbol{width:64px;height:64px;object-fit:contain;display:block;margin-bottom:1.1rem;}
+  .rg-eyebrow{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--amber);margin-bottom:0.5rem;}
+  .rg-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.4rem,15vw,8rem);line-height:0.92;letter-spacing:0.03em;color:var(--white);}
+  .rg-title span{color:var(--amber);}
+  .rg-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.2rem;}
+  .rg-tag{font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;border:1px solid rgba(232,160,32,0.4);color:var(--cream);padding:0.45rem 0.8rem;}
+  .rg-inner{max-width:980px;margin:0 auto;padding:2.5rem 1.5rem 4rem;}
+  .rg-about{border-left:3px solid var(--amber);padding-left:1.4rem;margin-bottom:2.5rem;}
+  .rg-lead{font-family:'DM Serif Display',serif;font-size:clamp(1.2rem,3.2vw,1.65rem);line-height:1.5;color:var(--cream);margin-bottom:1rem;}
+  .rg-sub{font-size:1rem;line-height:1.8;color:rgba(245,240,232,0.7);}
+  .rg-section{display:grid;grid-template-columns:110px minmax(0,1fr);gap:1.5rem;padding:2.2rem 0;border-top:1px solid rgba(232,160,32,0.15);}
+  .rg-num{font-family:'Bebas Neue',sans-serif;font-size:3.4rem;line-height:1;color:rgba(232,160,32,0.4);}
+  .rg-h{font-family:'DM Serif Display',serif;font-size:clamp(1.5rem,4vw,2.1rem);line-height:1.15;color:var(--white);margin-bottom:0.8rem;}
+  .rg-text{font-size:1rem;line-height:1.8;color:rgba(245,240,232,0.78);margin-bottom:1rem;max-width:720px;}
+  .rg-label{font-size:0.65rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--amber);margin:1.2rem 0 0.7rem;}
+  .rg-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0.6rem 2rem;}
+  .rg-list li{font-size:0.93rem;line-height:1.65;color:rgba(245,240,232,0.78);padding-left:1.1rem;position:relative;}
+  .rg-list li::before{content:'\2013';position:absolute;left:0;color:var(--amber);}
+  .rg-gallery{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-top:1.5rem;}
+  .rg-gallery figure{margin:0;}
+  .rg-gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center top;border:1px solid rgba(232,160,32,0.25);display:block;background:#111;}
+  .rg-gallery figcaption{font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);margin-top:0.4rem;}
+  .rg-figs{display:flex;flex-direction:column;gap:0.9rem;margin-top:1.5rem;}
+  .rg-fig{display:flex;gap:1.2rem;align-items:center;border:1px solid rgba(232,160,32,0.28);background:rgba(232,160,32,0.04);padding:1.1rem 1.3rem;}
+  .rg-fig-num{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;line-height:1;color:var(--amber);min-width:5.4rem;}
+  .rg-fig-text{font-size:0.98rem;line-height:1.55;color:var(--cream);}
+  .rg-fig-cap{display:block;font-size:0.64rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);margin-top:0.3rem;}
+  .rg-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:0.4rem 0 1.2rem;}
+  .rg-results{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+  .rg-stat{border:1px solid rgba(232,160,32,0.28);background:rgba(232,160,32,0.04);padding:1.2rem 1rem;}
+  .rg-stat b{display:block;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:2.6rem;line-height:1;color:var(--amber);}
+  .rg-stat span{display:block;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);margin-top:0.5rem;line-height:1.5;}
+  .rg-collab{background:var(--cream);color:var(--ink);padding:2rem 1.7rem;}
+  .rg-collab-tag{font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:#8a5a00;margin-bottom:0.6rem;}
+  .rg-collab-title{font-family:'DM Serif Display',serif;font-size:clamp(1.5rem,4vw,2rem);line-height:1.15;color:var(--ink);margin-bottom:0.8rem;}
+  .rg-collab-text{font-size:0.98rem;line-height:1.75;color:#2a2622;margin-bottom:1rem;}
+  .rg-collab-label{font-size:0.65rem;letter-spacing:0.24em;text-transform:uppercase;color:#8a5a00;margin-bottom:0.7rem;}
+  .rg-collab-list{list-style:none;display:flex;flex-direction:column;gap:0.55rem;margin-bottom:1.1rem;}
+  .rg-collab-list li{font-size:0.93rem;line-height:1.65;color:#2a2622;padding-left:1.1rem;position:relative;}
+  .rg-collab-list li::before{content:'\2013';position:absolute;left:0;color:#b87400;}
+  .rg-collab-note{font-size:0.9rem;line-height:1.7;font-style:italic;color:#4a443c;border-top:1px solid rgba(10,10,10,0.15);padding-top:1rem;}
+  .rg-role{margin-top:1rem;border:1px solid rgba(232,160,32,0.4);background:linear-gradient(135deg,rgba(232,160,32,0.09),transparent 70%);padding:2rem 1.7rem;}
+  .rg-role-lead{font-family:'DM Serif Display',serif;font-size:clamp(1.15rem,3vw,1.45rem);line-height:1.55;color:var(--cream);margin-bottom:1rem;}
+
+  @media(max-width:900px){
+    .stats-wrap{max-width:none;}
+    .featured-wide-inner{grid-template-columns:minmax(0,1fr);gap:1.2rem;}
+    .rg-section{grid-template-columns:minmax(0,1fr);gap:0.4rem;padding:1.8rem 0;}
+    .rg-num{font-size:2.6rem;}
+    .rg-list{grid-template-columns:minmax(0,1fr);}
+    .rg-results{grid-template-columns:repeat(2,1fr);}
+    .rg-hero{padding:2.2rem 1.2rem 2rem;}
+    .rg-inner{padding:2rem 1.2rem 3rem;}
+  }
+  @media(max-width:480px){
+    .rg-stats{gap:0.6rem;}
+    .rg-stat{padding:1rem 0.8rem;}
+    .rg-stat b{font-size:2.2rem;}
+    .rg-stat span{font-size:0.62rem;}
+    .rg-fig{padding:1rem;gap:0.9rem;}
+    .rg-fig-num{font-size:2.3rem;min-width:4.4rem;}
+    .rg-gallery{gap:0.5rem;}
+  }
+  html{scroll-padding-top:20px;}
+
+  /* CORE SKILLS: animated progress bars (no numbers shown) */
+  .skills{display:flex;flex-direction:column;gap:1.3rem;}
+  .skill-name{font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--cream);margin-bottom:0.55rem;}
+  .skill-track{height:10px;border-radius:999px;background:rgba(255,255,255,0.07);border:1px solid rgba(232,160,32,0.2);overflow:hidden;}
+  .skill-fill{position:relative;height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,#a86a00,#E8A020 62%,#f6c768);box-shadow:0 0 12px rgba(232,160,32,0.45);transition:width 1.6s cubic-bezier(0.22,0.8,0.24,1);}
+  .skill-fill.go{width:var(--w);}
+  .skill-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.5),transparent);transform:translateX(-100%);}
+  .skill-fill.go::after{animation:barShine 1.5s ease-out 0.35s 1 forwards;}
+  @keyframes barShine{to{transform:translateX(100%);}}
+
+  /* TOOLS: app icons */
+  .tools-grid{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:0.9rem;}
+  .tool{display:flex;flex-direction:column;align-items:center;gap:0.6rem;text-align:center;}
+  .tool-icon{width:58px;height:58px;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,0.55));transition:transform 0.25s;}
+  .tool:hover .tool-icon{transform:translateY(-3px) scale(1.05);}
+  .tool-label{font-size:0.7rem;letter-spacing:0.04em;color:var(--cream);line-height:1.3;}
+
+  /* SERVICES: tabbed matrix */
+  .tabs{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid rgba(232,160,32,0.3);margin-bottom:1.5rem;}
+  .tab{background:transparent;border:0;border-right:1px solid rgba(232,160,32,0.3);color:var(--mid);padding:0.95rem 0.5rem;font-family:'DM Sans',sans-serif;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:background 0.2s,color 0.2s;}
+  .tab:last-child{border-right:0;}
+  .tab:hover{color:var(--cream);}
+  .tab[aria-selected="true"]{background:var(--amber);color:var(--ink);font-weight:600;}
+  .tab:focus-visible{outline:2px solid var(--amber);outline-offset:-4px;}
+  .tab-panel[hidden]{display:none;}
+  .tab-panel{animation:panelIn 0.45s ease both;}
+  @keyframes panelIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+  .mx-head{display:grid;grid-template-columns:1.05fr 1.7fr 0.85fr;gap:1.5rem;padding:0 1.5rem 0.7rem;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);}
+  .mx-head span:last-child{text-align:right;}
+  .mx{list-style:none;display:flex;flex-direction:column;gap:0.8rem;}
+  .mx-row{display:grid;grid-template-columns:1.05fr 1.7fr 0.85fr;gap:1.5rem;align-items:start;border:1px solid rgba(232,160,32,0.2);background:rgba(232,160,32,0.03);padding:1.5rem;transition:border-color 0.3s;}
+  .mx-row:hover{border-color:rgba(232,160,32,0.5);}
+  .mx-name h3{font-family:'DM Serif Display',serif;font-size:1.2rem;line-height:1.25;color:var(--white);}
+  .mx-lead{font-size:0.82rem;line-height:1.6;font-style:italic;color:var(--mid);margin-bottom:0.7rem;}
+  .mx-list{list-style:none;display:flex;flex-direction:column;gap:0.45rem;}
+  .mx-list li{font-size:0.88rem;line-height:1.5;color:rgba(245,240,232,0.82);padding-left:1.4rem;position:relative;}
+  .mx-list li::before{content:'';position:absolute;left:0.05rem;top:0.4em;width:0.55rem;height:0.3rem;border-left:2px solid var(--amber);border-bottom:2px solid var(--amber);transform:rotate(-45deg);}
+  .mx-rate{display:flex;flex-direction:column;align-items:flex-end;text-align:right;}
+  .mx-amt{font-family:'Bebas Neue',sans-serif;font-size:2rem;line-height:1;letter-spacing:0.02em;color:var(--amber);}
+  .mx-unit{font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);margin-top:0.35rem;}
+
+  @media(max-width:900px){
+    .mx-head{display:none;}
+    .mx-row{grid-template-columns:minmax(0,1fr);gap:0.8rem;padding:1.3rem 1.2rem;}
+    .mx-name{order:1;}
+    .mx-rate{order:2;flex-direction:row;align-items:baseline;gap:0.7rem;text-align:left;}
+    .mx-inc{order:3;}
+    .mx-unit{margin-top:0;}
+    .tab{font-size:0.62rem;letter-spacing:0.06em;padding:0.85rem 0.3rem;}
+    .tools-grid{gap:0.5rem;}
+    .tool-icon{width:54px;height:54px;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .skill-fill{transition:none;}
+    .skill-fill.go::after{animation:none;}
+    .tab-panel{animation:none;}
+  }
 </style>
 </head>
 <body>
@@ -318,11 +437,14 @@
   </div>
   <div class="hero-right">
     <div class="hero-bg-text">SAYG</div>
-    <div class="stats-grid">
-      <div class="stat-card"><div class="stat-number">23K</div><div class="stat-label">Instagram followers gained from 700 in four months</div></div>
-      <div class="stat-card"><div class="stat-number">4.1M+</div><div class="stat-label">Views on a single video</div></div>
-      <div class="stat-card"><div class="stat-number">6</div><div class="stat-label">Videos that crossed one million views</div></div>
-      <div class="stat-card"><div class="stat-number">150K+</div><div class="stat-label">Views across Roogency FC football content</div></div>
+    <div class="stats-wrap">
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-number">23K</div><div class="stat-unit">Followers</div><div class="stat-label">Audience growth for Inkiri Fitness</div></div>
+        <div class="stat-card"><div class="stat-number">4.1M+</div><div class="stat-unit">Views</div><div class="stat-label">Achieved on a single video for Inkiri Fitness</div></div>
+        <div class="stat-card"><div class="stat-number">4</div><div class="stat-unit">Videos</div><div class="stat-label">That surpassed 1 million views for Inkiri Fitness</div></div>
+        <div class="stat-card"><div class="stat-number">50+</div><div class="stat-unit">Talents</div><div class="stat-label">Athletes and creatives worked with across sports and creative projects</div></div>
+      </div>
+      <p class="stats-note">The talents figure reflects work through Roogency.</p>
     </div>
   </div>
 </section>
@@ -338,19 +460,44 @@
   </div>
   <div class="about-right">
     <p class="section-tag">Core Skills</p>
-    <div class="skill-row"><span class="skill-label">Social Media Growth</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92"></div></div></div>
-    <div class="skill-row"><span class="skill-label">Community Management</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85"></div></div></div>
-    <div class="skill-row"><span class="skill-label">Sports Operations</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80"></div></div></div>
-    <div class="skill-row"><span class="skill-label">Project Management</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="75"></div></div></div>
-    <div class="skill-row"><span class="skill-label">Product Marketing</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="62"></div></div></div>
-
-    <p class="section-tag" style="margin-top:2rem;">Tools</p>
-    <div class="tools-row">
-      <span class="tool-chip">Asana</span>
-      <span class="tool-chip">Notion</span>
-      <span class="tool-chip">CapCut</span>
-      <span class="tool-chip">Google Workspace</span>
+    <div class="skills" id="skills">
+      <div class="skill"><div class="skill-name">Brand Strategy &amp; Positioning</div><div class="skill-track" aria-hidden="true"><div class="skill-fill" style="--w:80%"></div></div></div>
+      <div class="skill"><div class="skill-name">Social Media Growth</div><div class="skill-track" aria-hidden="true"><div class="skill-fill" style="--w:92%"></div></div></div>
+      <div class="skill"><div class="skill-name">Community Management</div><div class="skill-track" aria-hidden="true"><div class="skill-fill" style="--w:85%"></div></div></div>
+      <div class="skill"><div class="skill-name">Sports Operations</div><div class="skill-track" aria-hidden="true"><div class="skill-fill" style="--w:80%"></div></div></div>
+      <div class="skill"><div class="skill-name">Project Management</div><div class="skill-track" aria-hidden="true"><div class="skill-fill" style="--w:75%"></div></div></div>
+      <div class="skill"><div class="skill-name">Product Marketing</div><div class="skill-track" aria-hidden="true"><div class="skill-fill" style="--w:62%"></div></div></div>
     </div>
+
+    <p class="section-tag" style="margin-top:2.2rem;">Tools</p>
+    <ul class="tools-grid">
+      <li class="tool">
+        <svg class="tool-icon" viewBox="0 0 64 64" role="img" aria-label="Asana"><defs><linearGradient id="bg-asana" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF8F78"/><stop offset="1" stop-color="#F0506E"/></linearGradient><linearGradient id="gl-asana" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".30"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+          <rect width="64" height="64" rx="14" fill="url(#bg-asana)"/><rect width="64" height="64" rx="14" fill="url(#gl-asana)"/>
+          <circle cx="32" cy="23" r="8.5" fill="#fff"/><circle cx="21" cy="41.5" r="8.5" fill="#fff"/><circle cx="43" cy="41.5" r="8.5" fill="#fff"/></svg>
+        <span class="tool-label">Asana</span>
+      </li>
+      <li class="tool">
+        <svg class="tool-icon" viewBox="0 0 64 64" role="img" aria-label="Notion"><defs><linearGradient id="gl-notion" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".30"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+          <rect width="64" height="64" rx="14" fill="#fff"/><rect x="12" y="11" width="40" height="42" rx="5" fill="#fff" stroke="#111" stroke-width="2.6"/>
+          <path d="M21 18H29L37 31V18H43V46H35L27 33V46H21Z" fill="#111"/><rect width="64" height="64" rx="14" fill="url(#gl-notion)"/></svg>
+        <span class="tool-label">Notion</span>
+      </li>
+      <li class="tool">
+        <svg class="tool-icon" viewBox="0 0 64 64" role="img" aria-label="CapCut"><defs><linearGradient id="gl-capcut" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".30"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+          <rect width="64" height="64" rx="14" fill="#0b0b0b"/>
+          <path d="M45 24.5A15 15 0 1 0 45 39.5" fill="none" stroke="#fff" stroke-width="6.5"/>
+          <path d="M26.5 40.5L42 23.5" fill="none" stroke="#fff" stroke-width="5"/><rect width="64" height="64" rx="14" fill="url(#gl-capcut)"/></svg>
+        <span class="tool-label">CapCut</span>
+      </li>
+      <li class="tool">
+        <svg class="tool-icon" viewBox="0 0 64 64" role="img" aria-label="Google Workspace"><defs><linearGradient id="gl-gws" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".30"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+          <rect width="64" height="64" rx="14" fill="#fff"/>
+          <g transform="translate(15 15) scale(1.4167)"><path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z"/></g>
+          <rect width="64" height="64" rx="14" fill="url(#gl-gws)"/></svg>
+        <span class="tool-label">Google Workspace</span>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -367,7 +514,7 @@
       <p class="featured-meta">Canada · Remote · Freelance · July–October 2024</p>
       <ul class="featured-list">
         <li>Grew Instagram from <strong>700 to 23,000 followers</strong> in four months</li>
-        <li><strong>Six videos</strong> crossed one million views</li>
+        <li><strong>Four videos</strong> crossed one million views</li>
         <li>One video reached <strong>4.1M+ views</strong></li>
       </ul>
       <button type="button" class="btn-case" data-open-case="inkiri">View Full Case Study <span aria-hidden="true">&rarr;</span></button>
@@ -377,7 +524,7 @@
       <div class="featured-tag">Featured Project</div>
       <h3 class="featured-title">The Cosy &amp; Treasures</h3>
       <p class="featured-sub">Content Strategy &amp; Digital Growth</p>
-      <p class="featured-meta">Freelance · February 2026–Present</p>
+      <p class="featured-meta">Freelance · February–October 2026</p>
       <ul class="featured-list">
         <li>Content strategy and creative direction</li>
         <li>Brand shoot coordination and additional video production</li>
@@ -386,6 +533,24 @@
         <li>Training sales representatives in content production</li>
       </ul>
       <button type="button" class="btn-case" data-open-case="cosy">View Full Case Study <span aria-hidden="true">&rarr;</span></button>
+    </article>
+
+    <article class="featured-card featured-wide reveal">
+      <div class="featured-wide-inner">
+        <div>
+          <div class="featured-tag">Founder Project</div>
+          <h3 class="featured-title">Roogency</h3>
+          <p class="featured-sub">Youth Culture Media · Sports · Fashion · Lifestyle</p>
+          <p class="featured-meta">Founder · Founded 2023</p>
+          <button type="button" class="btn-case" data-open-case="roogency">See Project <span aria-hidden="true">&rarr;</span></button>
+        </div>
+        <ul class="featured-list">
+          <li>Brand development and positioning</li>
+          <li>Sports and culture media content</li>
+          <li>Talent and community development, including <strong>50+ talents</strong> worked with and a <strong>180+ member</strong> WhatsApp community</li>
+          <li>Sports Meets Fashion activation and the Hype Energy brand collaboration</li>
+        </ul>
+      </div>
     </article>
   </div>
 
@@ -413,76 +578,74 @@
   <h2 class="section-title">Services &amp; <em>Pricing</em></h2>
   <p class="service-intro">I help brands grow through strategy, not just content. I set the direction, coordinate the creatives, and build the systems that make a brand's digital presence work.</p>
 
-  <div class="price-group">
-    <p class="subhead">Monthly Retainers</p>
-    <div class="price-grid">
-      <div class="price-card reveal">
-        <h3 class="price-name">Strategy Advisory</h3>
-        <div class="price-amount">₦75,000</div>
-        <div class="price-unit">per month</div>
-        <p class="price-desc">Guidance, clear plans, and strategic direction for businesses that already have a team to execute.</p>
-      </div>
-      <div class="price-card reveal">
-        <h3 class="price-name">Growth &amp; Strategy</h3>
-        <div class="price-amount">₦150,000</div>
-        <div class="price-unit">per month</div>
-        <p class="price-desc">Strategy plus hands-on support: content planning, creative direction, scripting, and coordination.</p>
-      </div>
-      <div class="price-card reveal">
-        <h3 class="price-name">Strategic Growth Partner</h3>
-        <div class="price-amount">₦250,000–₦300,000</div>
-        <div class="price-unit">per month</div>
-        <p class="price-desc">Ongoing strategic partnership with deeper involvement in planning, coordination, and growth.</p>
-      </div>
-    </div>
+  <div class="tabs" role="tablist" aria-label="Service categories">
+    <button type="button" class="tab" role="tab" id="tab-retainers" aria-selected="true" aria-controls="panel-retainers">Monthly Retainers</button>
+    <button type="button" class="tab" role="tab" id="tab-projects" aria-selected="false" aria-controls="panel-projects" tabindex="-1">Project-Based</button>
+    <button type="button" class="tab" role="tab" id="tab-consult" aria-selected="false" aria-controls="panel-consult" tabindex="-1">Consultation</button>
   </div>
 
-  <div class="price-group">
-    <p class="subhead">Project-Based</p>
-    <div class="price-grid">
-      <div class="price-card reveal">
-        <h3 class="price-name">Brand Positioning &amp; Strategy</h3>
-        <div class="price-amount">₦75,000</div>
-        <div class="price-unit">per project</div>
-        <p class="price-desc">I help you define who you are, who your customers are, what makes you different, and how you should talk about yourself.</p>
-      </div>
-      <div class="price-card reveal">
-        <h3 class="price-name">Content Strategy Development</h3>
-        <div class="price-amount">₦130,000</div>
-        <div class="price-unit">per project</div>
-        <p class="price-desc">I create the full content plan: what to post, the themes, the tone, the content pillars, and the direction for the next 1–3 months.</p>
-      </div>
-      <div class="price-card reveal">
-        <h3 class="price-name">Campaign Planning &amp; Coordination</h3>
-        <div class="price-amount">₦170,000</div>
-        <div class="price-unit">per project</div>
-        <p class="price-desc">I plan a specific campaign and coordinate the people needed to execute it (shoot, models, editing, etc.).</p>
-      </div>
-    </div>
+  <div class="tab-panel" id="panel-retainers" role="tabpanel" aria-labelledby="tab-retainers">
+    <div class="mx-head" aria-hidden="true"><span>Service</span><span>What's included</span><span>Rate</span></div>
+    <ul class="mx">
+        <li class="mx-row">
+          <div class="mx-name"><h3>Strategy Advisory</h3></div>
+          <div class="mx-inc"><p class="mx-lead">For businesses that already have a team to execute.</p><ul class="mx-list"><li>Guidance</li><li>Clear plans</li><li>Strategic direction</li></ul></div>
+          <div class="mx-rate"><span class="mx-amt">₦75,000</span><span class="mx-unit">per month</span></div>
+        </li>
+        <li class="mx-row">
+          <div class="mx-name"><h3>Growth &amp; Strategy</h3></div>
+          <div class="mx-inc"><p class="mx-lead">Strategy plus hands-on support.</p><ul class="mx-list"><li>Content planning</li><li>Creative direction</li><li>Scripting</li><li>Coordination</li></ul></div>
+          <div class="mx-rate"><span class="mx-amt">₦150,000</span><span class="mx-unit">per month</span></div>
+        </li>
+        <li class="mx-row">
+          <div class="mx-name"><h3>Strategic Growth Partner</h3></div>
+          <div class="mx-inc"><p class="mx-lead">Ongoing strategic partnership with deeper involvement in:</p><ul class="mx-list"><li>Planning</li><li>Coordination</li><li>Growth</li></ul></div>
+          <div class="mx-rate"><span class="mx-amt">₦250,000–₦300,000</span><span class="mx-unit">per month</span></div>
+        </li>
+    </ul>
   </div>
 
-  <div class="price-group">
-    <p class="subhead">Consultation</p>
-    <div class="price-card audit-card reveal">
-      <div>
-        <h3 class="price-name">Brand Strategy Consultation / Brand Audit</h3>
-        <div class="price-unit">60–90 minutes</div>
-      </div>
-      <div class="price-amount">₦40,000</div>
-    </div>
+  <div class="tab-panel" id="panel-projects" role="tabpanel" aria-labelledby="tab-projects" hidden>
+    <div class="mx-head" aria-hidden="true"><span>Service</span><span>What's included</span><span>Rate</span></div>
+    <ul class="mx">
+        <li class="mx-row">
+          <div class="mx-name"><h3>Brand Positioning &amp; Strategy</h3></div>
+          <div class="mx-inc"><p class="mx-lead">I help you define:</p><ul class="mx-list"><li>Who you are</li><li>Who your customers are</li><li>What makes you different</li><li>How you should talk about yourself</li></ul></div>
+          <div class="mx-rate"><span class="mx-amt">₦75,000</span><span class="mx-unit">per project</span></div>
+        </li>
+        <li class="mx-row">
+          <div class="mx-name"><h3>Content Strategy Development</h3></div>
+          <div class="mx-inc"><p class="mx-lead">The full content plan:</p><ul class="mx-list"><li>What to post</li><li>Themes</li><li>Tone</li><li>Content pillars</li><li>Direction for the next 1–3 months</li></ul></div>
+          <div class="mx-rate"><span class="mx-amt">₦130,000</span><span class="mx-unit">per project</span></div>
+        </li>
+        <li class="mx-row">
+          <div class="mx-name"><h3>Campaign Planning &amp; Coordination</h3></div>
+          <div class="mx-inc"><p class="mx-lead">A specific campaign, planned and coordinated:</p><ul class="mx-list"><li>Campaign planning</li><li>Coordination of the people needed to execute it: shoot, models, editing, etc.</li></ul></div>
+          <div class="mx-rate"><span class="mx-amt">₦170,000</span><span class="mx-unit">per project</span></div>
+        </li>
+    </ul>
   </div>
 
-  <div class="price-group">
-    <p class="subhead">Available as Add-ons</p>
-    <div class="addons">
-      <span class="addon-chip">Google Business Profile Setup</span>
-      <span class="addon-chip">Business Websites</span>
-      <span class="addon-chip">E-commerce Websites</span>
-      <span class="addon-chip">Social Media Profile Revamp</span>
-    </div>
+  <div class="tab-panel" id="panel-consult" role="tabpanel" aria-labelledby="tab-consult" hidden>
+    <div class="mx-head" aria-hidden="true"><span>Service</span><span>What's included</span><span>Rate</span></div>
+    <ul class="mx">
+        <li class="mx-row">
+          <div class="mx-name"><h3>Brand Strategy Consultation / Brand Audit</h3></div>
+          <div class="mx-inc"><ul class="mx-list"><li>Brand strategy consultation</li><li>Brand audit</li><li>60–90 minutes</li></ul></div>
+          <div class="mx-rate"><span class="mx-amt">₦40,000</span><span class="mx-unit">60–90 minutes</span></div>
+        </li>
+    </ul>
   </div>
 
-  <p class="pricing-notes">Introductory prices. Production costs, talent fees, advertising and other third-party expenses are quoted separately where applicable.</p>
+  <p class="subhead" style="margin-top:2.4rem;">Available as Add-ons</p>
+  <div class="addons">
+    <span class="addon-chip">Google Business Profile Setup</span>
+    <span class="addon-chip">Business Websites</span>
+    <span class="addon-chip">E-commerce Websites</span>
+    <span class="addon-chip">Social Media Profile Revamp</span>
+  </div>
+
+  <p class="pricing-notes">Production costs, talent fees, advertising and other third-party expenses are quoted separately where applicable.</p>
 </section>
 
 <!-- TESTIMONIALS -->
@@ -509,7 +672,7 @@
   <div class="timeline">
     <div class="timeline-item">
       <div class="timeline-dot"></div>
-      <p class="timeline-period">Feb 2026 – Present</p>
+      <p class="timeline-period">Feb – Oct 2026</p>
       <h3 class="timeline-role">Content Strategist &amp; Digital Growth Consultant</h3>
       <p class="timeline-org">The Cosy &amp; Treasures · Freelance</p>
       <ul class="timeline-points">
@@ -545,7 +708,7 @@
       <p class="timeline-org">Inkiri Fitness · Freelance · Canada, Remote</p>
       <ul class="timeline-points">
         <li>Grew an Instagram account from 700 to 23,000 followers in four months</li>
-        <li>Reached 1M+ views on six videos and 4.1M views on a single video</li>
+        <li>Reached 1M+ views on four videos and 4.1M views on a single video</li>
       </ul>
     </div>
     <div class="timeline-item">
@@ -637,7 +800,7 @@
       <div class="case-results">
         <div class="case-stat"><div class="case-stat-num">700 → 23,000</div><div class="case-stat-label">Followers in four months</div></div>
         <div class="case-stat"><div class="case-stat-num">4.1M+</div><div class="case-stat-label">Views on the highest-performing individual video</div></div>
-        <div class="case-stat"><div class="case-stat-num">6</div><div class="case-stat-label">Videos crossed one million views</div></div>
+        <div class="case-stat"><div class="case-stat-num">4</div><div class="case-stat-label">Videos crossed one million views</div></div>
       </div>
     </div>
 
@@ -660,7 +823,7 @@
     <p class="section-tag">Freelance Project</p>
     <h2 class="case-title" id="case-cosy-title">Content Strategy &amp; Digital Growth</h2>
     <p class="case-client">The Cosy &amp; Treasures</p>
-    <div class="case-meta"><span>Freelance</span><span>February 2026–Present</span></div>
+    <div class="case-meta"><span>Freelance</span><span>February–October 2026</span></div>
 
     <div class="case-block">
       <h3>Project Overview</h3>
@@ -697,6 +860,153 @@
   </div>
 </div>
 
+<!-- PROJECT PAGE: ROOGENCY -->
+<div class="case-view" id="case-roogency" role="dialog" aria-modal="true" aria-labelledby="case-roogency-title" aria-hidden="true">
+  <div class="case-bar">
+    <button type="button" class="case-back" data-close-case>&larr; Back to Projects</button>
+    <span class="case-bar-label">Founder Project</span>
+  </div>
+
+  <header class="rg-hero">
+    <div class="rg-hero-inner">
+      <img class="rg-symbol" data-src="roogencysymbol.png" alt="" width="64" height="64" decoding="async" onerror="this.style.display='none'">
+      <p class="rg-eyebrow">Founder Project</p>
+      <h2 class="rg-title" id="case-roogency-title">R<span>OO</span>GENCY</h2>
+      <div class="rg-tags"><span class="rg-tag">Youth Culture Media</span><span class="rg-tag">Sports</span><span class="rg-tag">Fashion</span><span class="rg-tag">Lifestyle</span></div>
+    </div>
+  </header>
+
+  <div class="rg-inner">
+
+    <div class="rg-about">
+      <p class="section-tag">About Roogency</p>
+      <p class="rg-lead">Roogency is a youth culture media company building content systems around sports, fashion and lifestyle. Through storytelling, talent visibility and community-driven experiences, we create opportunities for emerging African talent while helping brands connect with young audiences.</p>
+      <p class="rg-sub">Founded in 2023, Roogency has evolved into a community-first media platform, with sports serving as its primary entry point into youth culture.</p>
+    </div>
+
+    <div class="rg-section">
+      <div class="rg-num">01</div>
+      <div class="rg-body">
+        <h3 class="rg-h">Brand Development &amp; Positioning</h3>
+        <p class="rg-text">Developed Roogency's brand identity, positioning and strategic direction, shaping its evolution into a youth culture media platform.</p>
+        <p class="rg-label">Areas of work include:</p>
+        <ul class="rg-list">
+          <li>Brand development and positioning.</li>
+          <li>Brand messaging and communication.</li>
+          <li>Content direction and platform strategy.</li>
+          <li>Development of its sports, fashion and lifestyle focus.</li>
+          <li>Building a distinct identity around youth culture and emerging talent.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rg-section">
+      <div class="rg-num">02</div>
+      <div class="rg-body">
+        <h3 class="rg-h">Sports &amp; Culture Media</h3>
+        <p class="rg-text">Built Roogency's content direction around sports and youth culture, using digital storytelling to document talent, create visibility and connect with audiences.</p>
+        <p class="rg-label">Areas of work include:</p>
+        <ul class="rg-list">
+          <li>Football and basketball content production.</li>
+          <li>Sports storytelling and documentation.</li>
+          <li>Creative content development.</li>
+          <li>Talent-focused features and digital storytelling.</li>
+          <li>Social media content distribution.</li>
+        </ul>
+        <div class="rg-gallery">
+          <figure><img data-src="roogencyfcteam1.png" alt="Football" loading="lazy" decoding="async" style="object-position:center 66%" onerror="this.parentNode.style.display='none'"><figcaption>Football</figcaption></figure>
+          <figure><img data-src="roogencybasketball.png" alt="Basketball" loading="lazy" decoding="async" style="object-position:center 74%" onerror="this.parentNode.style.display='none'"><figcaption>Basketball</figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="rg-section">
+      <div class="rg-num">03</div>
+      <div class="rg-body">
+        <h3 class="rg-h">Talent &amp; Community Development</h3>
+        <p class="rg-text">Developed and coordinated a growing community connecting athletes, creatives and other young people through sports, fashion and shared creative interests.</p>
+        <p class="rg-label">Areas of work include:</p>
+        <ul class="rg-list">
+          <li>Community building and engagement.</li>
+          <li>Talent discovery and visibility.</li>
+          <li>Connecting athletes, models and creatives.</li>
+          <li>Creating opportunities for collaboration.</li>
+          <li>Developing community-led experiences.</li>
+        </ul>
+        <div class="rg-figs">
+          <div class="rg-fig">
+            <div class="rg-fig-num">50+</div>
+            <div class="rg-fig-text">Worked with 50+ talents across sports and creative activities.<span class="rg-fig-cap">Talents worked with directly</span></div>
+          </div>
+          <div class="rg-fig">
+            <div class="rg-fig-num">180+</div>
+            <div class="rg-fig-text">Built a WhatsApp community with 180+ members.<span class="rg-fig-cap">The wider Roogency community</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rg-section">
+      <div class="rg-num">04</div>
+      <div class="rg-body">
+        <h3 class="rg-h">Sports Meets Fashion</h3>
+        <p class="rg-text">Conceptualised and coordinated a Sports Meets Fashion experience designed to bring sports and fashion communities together.</p>
+        <p class="rg-label">The activation brought together:</p>
+        <div class="rg-stats">
+          <div class="rg-stat"><b>38</b><span>Athletes and creatives</span></div>
+          <div class="rg-stat"><b>2</b><span>Fashion brands</span></div>
+          <div class="rg-stat"><b>2</b><span>Business vendors</span></div>
+        </div>
+        <p class="rg-text" style="margin-bottom:0">The experience created an opportunity for talent, fashion businesses and vendors to connect through a shared community experience.</p>
+      </div>
+    </div>
+
+    <div class="rg-section">
+      <div class="rg-num">05</div>
+      <div class="rg-body">
+        <h3 class="rg-h">Brand Collaborations</h3>
+        <div class="rg-collab">
+          <p class="rg-collab-tag">Featured brand collaboration</p>
+          <h4 class="rg-collab-title">Roogency × Hype Energy</h4>
+          <p class="rg-collab-text">Explored ways to connect Hype Energy with young sporting audiences through football content, basketball visuals, product integration and community engagement.</p>
+          <p class="rg-collab-label">Selected executions:</p>
+          <ul class="rg-collab-list">
+            <li>Produced 12 football-humour videos.</li>
+            <li>Organised a basketball-themed product sampling shoot and commercial visuals.</li>
+            <li>Integrated Hype Energy products into Roogency FC's Player of the Match recognition.</li>
+            <li>Created engagement opportunities across Roogency's football and basketball communities.</li>
+            <li>Mobilised 10+ football players to follow Hype Energy on Instagram.</li>
+          </ul>
+          <p class="rg-collab-note">The approach focused on integrating the brand naturally into existing sports and community experiences.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="rg-section">
+      <div class="rg-num">06</div>
+      <div class="rg-body">
+        <h3 class="rg-h">Selected Results &amp; Achievements</h3>
+        <div class="rg-results">
+          <div class="rg-stat"><b>180+</b><span>Community members</span></div>
+          <div class="rg-stat"><b>50+</b><span>Talents worked with</span></div>
+          <div class="rg-stat"><b>38</b><span>Athletes and creatives brought together for Sports Meets Fashion</span></div>
+          <div class="rg-stat"><b>2 + 2</b><span>2 fashion brands and 2 vendors involved in the activation</span></div>
+          <div class="rg-stat"><b>12</b><span>Football-humour videos produced for Hype Energy</span></div>
+          <div class="rg-stat"><b>150K+</b><span>Views across Roogency FC football content</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rg-role">
+      <p class="section-tag">My Role</p>
+      <p class="rg-role-lead">As Founder, I have been responsible for developing Roogency's direction, positioning and content strategy, identifying opportunities, building relationships, coordinating creative execution and developing its sports and talent communities.</p>
+      <p class="rg-text" style="margin-bottom:0">My work spans brand development, content production, community coordination, sports initiatives and brand collaborations.</p>
+    </div>
+
+    <button type="button" class="case-back case-back-bottom" data-close-case>&larr; Back to Projects</button>
+  </div>
+</div>
+
 <script>
   const hamburger = document.getElementById('hamburger');
   const menuOverlay = document.getElementById('menuOverlay');
@@ -711,14 +1021,39 @@
   hamburger.addEventListener('click', () => setMenu(!menuOverlay.classList.contains('open')));
   menuLinks.forEach(link => link.addEventListener('click', () => setMenu(false)));
 
-  const bars = document.querySelectorAll('.skill-bar-fill');
-  const aboutSection = document.querySelector('#about');
-  const skillObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { bars.forEach(bar => { bar.style.width = bar.dataset.width + '%'; }); skillObs.disconnect(); }
+  const skillsEl = document.getElementById('skills');
+  if (skillsEl) {
+    const fills = skillsEl.querySelectorAll('.skill-fill');
+    const skillObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          fills.forEach((f, i) => { f.style.transitionDelay = (i * 140) + 'ms'; f.classList.add('go'); });
+          skillObs.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    skillObs.observe(skillsEl);
+  }
+
+  // Service tabs
+  const tabs = Array.from(document.querySelectorAll('.tab'));
+  function selectTab(t) {
+    tabs.forEach(x => {
+      const on = x === t;
+      x.setAttribute('aria-selected', on ? 'true' : 'false');
+      x.tabIndex = on ? 0 : -1;
+      document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
     });
-  }, { threshold: 0.2 });
-  if (aboutSection) skillObs.observe(aboutSection);
+  }
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => selectTab(t));
+    t.addEventListener('keydown', (e) => {
+      let j = null;
+      if (e.key === 'ArrowRight') j = (i + 1) % tabs.length;
+      if (e.key === 'ArrowLeft') j = (i - 1 + tabs.length) % tabs.length;
+      if (j !== null) { e.preventDefault(); tabs[j].focus(); selectTab(tabs[j]); }
+    });
+  });
 
   const timelineItems = document.querySelectorAll('.timeline-item');
   const timelineObs = new IntersectionObserver((entries) => {
@@ -740,6 +1075,7 @@
     lastFocus = document.activeElement;
     el.classList.add('open');
     el.setAttribute('aria-hidden', 'false');
+    el.querySelectorAll('img[data-src]').forEach(i => { i.src = i.getAttribute('data-src'); i.removeAttribute('data-src'); });
     el.scrollTop = 0;
     document.body.style.overflow = 'hidden';
     if (push !== false) history.pushState({ case: key }, '', '#case-' + key);
@@ -755,7 +1091,7 @@
     const p = document.getElementById('projects');
     // wait a beat so the browser's own scroll restoration can't override this
     setTimeout(() => {
-      if (p) window.scrollTo({ top: p.getBoundingClientRect().top + window.scrollY, left: 0, behavior: 'instant' });
+      if (p) window.scrollTo({ top: p.getBoundingClientRect().top + window.scrollY - 20, left: 0, behavior: 'instant' });
     }, 60);
     if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
   }
